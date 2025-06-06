@@ -1,13 +1,6 @@
 # choice= input("what do you like? (espresso/latte/cappuccino): ")
 # print(choice)
-
-from resources_db import machine_resources as resources
-
-def get_resources_report():
-    print(f"water: {resources.get('water', ' ')}ml")
-    print(f"milk: {resources.get('milk', ' ')}ml")
-    print(f"water: {resources.get('water', ' ')}ml")
-    print(f"water: {resources.get('water', ' ')}ml")
+from utils import get_resources_report,is_resources_sufficient
 
 is_machine_on= True
 
@@ -17,3 +10,12 @@ while is_machine_on:
         is_machine_on = False
     elif choice.lower() == "report":
         get_resources_report()
+    
+    else:
+        if choice not in ["latte","espresso","cappuccino"]:
+            print(f"sorry!!! {choice} is not available. select correctly")
+        else:
+            print(is_resources_sufficient(choice))
+
+    
+
